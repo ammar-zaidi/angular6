@@ -1,0 +1,66 @@
+
+  <div class="details">
+      <div>
+        <section>
+        <h4 id="reqID">Product Listxzxz</h4>
+        <div  class="tbl-header">
+         
+            </div>
+           <div class="">
+             <!--  <table  class="table table-hover">
+                <tbody>
+                <tr *ngFor="let product of products,let i=index">
+                  <td>{{i+1}}</td>
+                  <td>{{product.product_name}}</td>
+                  <td>{{product.product_code}}</td>
+                  <td>{{product.description}}</td>
+                  <td>{{product.price}}</td>
+                  
+                  <td class="assignIgnore"><button class="btn btn-success ai" type="button" (click)="cartService.addItem(product.id,product.product_name, product.price,1,false)"><i class="fa fa-shopping-cart"></i>
+                    </button>&nbsp;
+                  </td>
+                </tr>
+              </tbody>
+            </table> -->
+ <nav class="navbar">
+      <input class="form-control" type="text"  [(ngModel)]="nameSearch"> 
+      <input class="form-control" type="text"  [(ngModel)]="codeSearch">      
+    </nav>
+     <input type="range" min="0" max="50000" numeric [(ngModel)]="priceSearch" >
+     
+            <table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+                <th scope="col" (click)="sort('product_name')">Name  
+  <span class="glyphicon sort-icon" *ngIf="key =='product_name'" [ngClass]="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+</th>
+                <th scope="col">Code</th>
+                <th scope="col">Description</th>
+                <th scope="col" (click)="sort('price')">Price<span class="glyphicon sort-icon" *ngIf="key =='price'" [ngClass]="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let product of products | orderBy: key : reverse | filter : nameSearch:codeSearch:priceSearch | paginate: { itemsPerPage: 10, currentPage: p };let i=index">
+      <th scope="row">{{i+1}}</th>
+       <td>{{product.product_name}}</td>
+                  <td>{{product.product_code}}</td>
+                  <td>{{product.description}}</td>
+                  <td>{{product.price | number}}</td>
+                  
+                  <td class="assignIgnore"><i class="glyphicon glyphicon-shopping-cart" (click)="cartService.addItem(product.id,product.product_name, product.price,1,false)"></i>
+                   
+                  </td>
+    </tr>
+   
+  </tbody>
+  <pagination-controls (pageChange)="p = $event"></pagination-controls>
+</table>
+            </div>
+            </section>
+      </div>
+    </div>
+
+  
+
+      

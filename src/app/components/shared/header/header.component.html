@@ -1,0 +1,22 @@
+
+
+
+<div class="header">
+    <ul id="navelements">
+     
+      <li class="element">
+          <div class="goback">
+          	<a [routerLink]="['/login']" [queryParams]="{debug: true}" fragment="login">
+           <i class="glyphicon glyphicon-log-in" aria-hidden="true" style="color: #fff"></i>
+           </a> &nbsp;&nbsp;
+            <a [routerLink]="['/cart']" [queryParams]="{debug: true}" fragment="cart">
+            <i class="glyphicon glyphicon-shopping-cart" style="color: #fff"></i>
+             <span id="lblCartCount" class="badge badge-notify">{{cartService.getTotalCount(null)}}</span>
+           </a> 
+
+       
+          
+            </div>
+      </li>  
+    </ul>
+  </div>
